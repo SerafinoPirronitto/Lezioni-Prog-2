@@ -24,7 +24,8 @@ public:
         Nodo<T> *curr = other.m_Head;
         while (curr != nullptr)
         {
-            insert(curr->value, m_Count);
+            // O(n) * O(n) = O(n^2)
+            insert(curr->value, m_Count); // inserimento in coda. [5] -> [6] -> [1] -> NIL. [5] -> [6]-> [1] ->NIL
             curr = curr->next;
         }
     }
@@ -114,7 +115,7 @@ public:
             i++;
             prev = curr;
             curr = curr->next;
-        }
+        } // O(n)
         // tecnicamente non serve perché controlliamo all'entrata nella funzione se l'indice è corretto
         // exit_if_null(curr, "Index out of range");
 
@@ -247,6 +248,7 @@ private:
         exit(EXIT_FAILURE);
     }
 
+    Node<T> *m_Tail;
     Nodo<T> *m_Head;
     size_t m_Count;
 };
